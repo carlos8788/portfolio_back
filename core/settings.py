@@ -125,7 +125,10 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 print(os.path.join(BASE_DIR, "staticfiles"))
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-WHITENOISE_MANIFEST_STRICT = False
+
+for root, dirs, files in os.walk(STATIC_ROOT):
+    for file in files:
+        print(os.path.join(root, file))
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
