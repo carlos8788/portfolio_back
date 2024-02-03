@@ -17,7 +17,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 DEBUG = "RENDER" not in os.environ
-# DEBUG = True
+DEBUG = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
@@ -74,22 +74,25 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
-if DEBUG:
-    DATABASES = {
-        "default": dj_database_url.config(
-            # Feel free to alter this value to suit your needs.
-            default=env("DATABASE_URL_EXTERNAL"),
-            conn_max_age=600,
-        )
-    }
-else:
-    DATABASES = {
-        "default": dj_database_url.config(
-            # Feel free to alter this value to suit your needs.
-            default=env("DATABASE_URL"),
-            conn_max_age=600,
-        )
-    }
+# if DEBUG:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('NAME'),
+#         'USER': env('USER'),
+#         'PASSWORD': env('PASSWORD'),
+#         'HOST': env('HOST'),
+#         'PORT': env('PORT')
+#     }
+# }
+# else:
+DATABASES = {
+    "default": dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default=env("DATABASE_URL"),
+        conn_max_age=600,
+    )
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
