@@ -12,6 +12,7 @@ class Project(models.Model):
     
     def to_dict(self):
         return{
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "url_repo": self.url_repo,
