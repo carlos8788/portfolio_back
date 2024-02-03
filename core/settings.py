@@ -17,7 +17,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 DEBUG = "RENDER" not in os.environ
-# DEBUG = True
+DEBUG = False
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
@@ -75,7 +75,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 
 # if DEBUG:
-#     DATABASES = {
+# DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': env('NAME'),
@@ -123,8 +123,7 @@ STATIC_URL = "static/"
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-
+print(os.path.join(BASE_DIR, "staticfiles"))
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
