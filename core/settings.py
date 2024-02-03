@@ -17,7 +17,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 DEBUG = "RENDER" not in os.environ
-DEBUG = False
+DEBUG = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
@@ -123,12 +123,9 @@ STATIC_URL = "static/"
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-print(os.path.join(BASE_DIR, "staticfiles"))
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-for root, dirs, files in os.walk(STATIC_ROOT):
-    for file in files:
-        print(os.path.join(root, file))
+
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
