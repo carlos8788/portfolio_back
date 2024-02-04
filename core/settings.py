@@ -17,7 +17,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 DEBUG = "RENDER" not in os.environ
-# DEBUG = True
+DEBUG = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
@@ -119,7 +119,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -142,6 +142,7 @@ LOGGING = {
     },
 }
 
+WHITENOISE_MANIFEST_STRICT = False
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
