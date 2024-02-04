@@ -173,3 +173,17 @@ cloudinary.config(
     api_key=env("CLOUDINARY_API_KEY"),
     api_secret=env("CLOUDINARY_API_SECRET"),
 )
+
+
+import json
+
+# Ruta al archivo staticfiles.json
+staticfiles_json_path = os.path.join(BASE_DIR, 'staticfiles', 'staticfiles.json')
+
+# Leer y imprimir el contenido de staticfiles.json
+if os.path.exists(staticfiles_json_path):
+    with open(staticfiles_json_path, 'r') as f:
+        staticfiles_json = json.load(f)
+        print(json.dumps(staticfiles_json, indent=4))
+else:
+    print('No se encontró staticfiles.json en:', staticfiles_json_path)
