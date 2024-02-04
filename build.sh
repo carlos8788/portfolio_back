@@ -6,3 +6,6 @@ poetry install
 
 python manage.py collectstatic --no-input
 python manage.py migrate
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "Construcción y migración completadas."
