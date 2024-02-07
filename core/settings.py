@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "drf_yasg",
+    "dj_rest_auth",
     # MY APPS
     "home",
     "contactos",
@@ -141,6 +142,10 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
 
 CORS_ALLOW_METHODS = [
@@ -151,6 +156,7 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS",
 ]
+CSRF_COOKIE_SECURE = True
 
 cloudinary.config(
     cloud_name=env("CLOUDINARY_CLOUD_NAME"),

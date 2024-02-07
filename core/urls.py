@@ -7,25 +7,23 @@ from django.contrib import admin
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ["url", "username", "email", "is_staff"]
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('id')
+    queryset = User.objects.all().order_by("id")
     serializer_class = UserSerializer
 
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-
-
+router.register(r"users", UserViewSet)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/contactos/', include('contactos.urls')),
-    path('api/projects/', include('project.urls')),
-
+    path("admin/", admin.site.urls),
+    path("", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("api/contactos/", include("contactos.urls")),
+    path("api/projects/", include("project.urls")),
+    path("auth/", include("dj_rest_auth.urls")),
 ]
