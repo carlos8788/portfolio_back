@@ -159,6 +159,9 @@ CORS_ALLOW_METHODS = [
 ]
 CSRF_COOKIE_SECURE = True
 
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
 cloudinary.config(
     cloud_name=env("CLOUDINARY_CLOUD_NAME"),
     api_key=env("CLOUDINARY_API_KEY"),
