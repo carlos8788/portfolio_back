@@ -20,7 +20,7 @@ DEBUG = "RENDER" not in os.environ
 # DEBUG = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
+ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, 'localhost']
 
 
 INSTALLED_APPS = [
@@ -74,25 +74,24 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
-# if DEBUG:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('NAME'),
-#         'USER': env('USER'),
-#         'PASSWORD': env('PASSWORD'),
-#         'HOST': env('HOST'),
-#         'PORT': env('PORT')
-#     }
-# }
-# else:
-DATABASES = {
-    "default": dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default=env("DATABASE_URL"),
-        conn_max_age=600,
-    )
-}
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env('NAME'),
+            'USER': env('USER'),
+            'PASSWORD': env('PASSWORD'),
+            'HOST': env('HOST'),
+            'PORT': env('PORT')
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=env("DATABASE_URL"),
+            conn_max_age=600,
+        )
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -125,22 +124,6 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
 
 WHITENOISE_MANIFEST_STRICT = False
 
@@ -173,17 +156,3 @@ cloudinary.config(
     api_key=env("CLOUDINARY_API_KEY"),
     api_secret=env("CLOUDINARY_API_SECRET"),
 )
-
-
-import json
-
-# Ruta al archivo staticfiles.json
-staticfiles_json_path = os.path.join(BASE_DIR, 'staticfiles', 'staticfiles.json')
-
-# Leer y imprimir el contenido de staticfiles.json
-if os.path.exists(staticfiles_json_path):
-    with open(staticfiles_json_path, 'r') as f:
-        staticfiles_json = json.load(f)
-        print(json.dumps(staticfiles_json, indent=4))
-else:
-    print('No se encontró staticfiles.json en:', staticfiles_json_path)
