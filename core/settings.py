@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "home",
     "contactos",
     "project",
+    "login",
 ]
 
 
@@ -53,7 +54,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware"
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -134,7 +135,7 @@ WHITENOISE_MANIFEST_STRICT = False
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ORIGIN_WHITELIST = [env("ORIGIN"), env("ORIGIN_LOCAL"), 'http://localhost:5173/', 'http://localhost:5174/']
+CORS_ORIGIN_WHITELIST = [env("ORIGIN"), env("ORIGIN_LOCAL"), 'http://localhost:5173']
 CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST
 CORS_ALLOW_CREDENTIALS = True
 
@@ -158,10 +159,9 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS",
 ]
-CSRF_COOKIE_SECURE = False
-
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SAMESITE = 'None'
+# SESSION_COOKIE_SAMESITE = 'None'
 
 cloudinary.config(
     cloud_name=env("CLOUDINARY_CLOUD_NAME"),

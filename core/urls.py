@@ -26,4 +26,5 @@ urlpatterns = [
     path("api/contactos/", include("contactos.urls")),
     path("api/projects/", include("project.urls")),
     path("auth/", include("dj_rest_auth.urls")),
+    path("api/login/", include("login.urls")),
 ]
