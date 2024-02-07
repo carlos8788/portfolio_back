@@ -3,6 +3,7 @@ Brotli==1.0.9
 certifi==2024.2.2
 cloudinary==1.38.0
 dj-database-url==2.0.0
+dj-rest-auth==5.0.2
 Django==3.2
 django-cors-headers==4.1.0
 django-environ==0.10.0
