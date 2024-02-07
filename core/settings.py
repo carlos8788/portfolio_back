@@ -17,6 +17,7 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 DEBUG = "RENDER" not in os.environ
+print(DEBUG)
 
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -133,7 +134,7 @@ WHITENOISE_MANIFEST_STRICT = False
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ORIGIN_WHITELIST = [env("ORIGIN"), env("ORIGIN_LOCAL"), 'http://localhost:5173', 'http://localhost:5174']
+CORS_ORIGIN_WHITELIST = [env("ORIGIN"), env("ORIGIN_LOCAL"), 'http://localhost:5173/', 'http://localhost:5174/']
 CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST
 CORS_ALLOW_CREDENTIALS = True
 
@@ -157,7 +158,7 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS",
 ]
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
