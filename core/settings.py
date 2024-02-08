@@ -159,9 +159,18 @@ CORS_ALLOW_METHODS = [
     "DELETE",
     "OPTIONS",
 ]
-# CSRF_COOKIE_SECURE = True
-# CSRF_COOKIE_SAMESITE = 'None'
-# SESSION_COOKIE_SAMESITE = 'None'
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+)
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 cloudinary.config(
     cloud_name=env("CLOUDINARY_CLOUD_NAME"),
