@@ -3,6 +3,7 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 class Project(models.Model):
     name = models.CharField(max_length=200)
+    tecnologies = models.CharField(max_length=200, null= True)
     description = models.TextField()
     url_repo = models.URLField()
     url_capture = CloudinaryField('url_capture')
